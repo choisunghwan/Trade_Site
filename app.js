@@ -11,8 +11,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var joinRouter = require('./routes/join');
 var loginRouter = require('./routes/login');
-// var menusRouter = require('./routes/menus');
-// var bbsRouter = require('./routes/bbs');
+var productRouter = require('./routes/product');
+var introRouter = require('./routes/intro');
+var cartRouter = require('./routes/cart');
+var prodInfoRouter = require('./routes/prodInfo');
+
 var app = express();
 
 // view engine setup <ejs 템플릿엔진 사용>
@@ -36,8 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/join', joinRouter);
 app.use('/login', loginRouter);
-// app.use('/menus', menusRouter);
-// app.use('/bbs', bbsRouter);
+app.use('/product', productRouter);
+app.use('/intro',introRouter);
+app.use('/cart', cartRouter);
+app.use('/prodInfo',prodInfoRouter)
+
 
 
 // catch 404 and forward to error handler
