@@ -1,45 +1,38 @@
-const ejs = require('ejs');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
+// 레이아웃 설정
+const expressLayouts = require('express-ejs-layouts');
+
 var oracledb = require('oracledb');
 oracledb.autoCommit = true;
 
-//라우팅
-
-var indexRouter = require('./routes/index');
-var joinRouter = require('./routes/join');
-var loginRouter = require('./routes/login');
-var productRouter = require('./routes/user/product');
-var introRouter = require('./routes/user/intro');
-var cartRouter = require('./routes/user/cart');
-var prodInfoRouter = require('./routes/user/prodInfo');
-
-//관리자 라우팅
-var mainRouter = require('./routes/admin/main');
-
+var shopRouter = require('./routes/index');
 
 var app = express();
 
-// view engine setup <ejs 템플릿엔진 사용>
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//부트스트랩 사용
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS  
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+// 레이아웃 설정
+app.set('layout', 'layout')
+app.set('layout extractScripts', true);
+app.set('layout extractStyles', true);
+app.use(expressLayouts)
 
-app.use(express.static("views"));
 app.use(logger('dev'));
-app.use(express.json()); //json 형태로 뿌려주기
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
+// 세션 설정
 app.use( // request를 통해 세션 접근 가능 ex) req.session
   session({
     // key: "loginData",
@@ -54,19 +47,17 @@ app.use( // request를 통해 세션 접근 가능 ex) req.session
   })
 );
 
-//비회원 API 
-app.use('/join', joinRouter);
-app.use('/login', loginRouter);
+// 전역 변수
+app.use(function (req, res, next) {
+  if (req.session.user) {
+    global.sessionName = req.session.user.sessionName;
+    global.sessionEmail = req.session.user.sessionEmail;
+  }
+  next();
+});
 
-//회원
-app.use('/', indexRouter);
-app.use('/user/product', productRouter);
-app.use('/user/intro',introRouter);
-app.use('/user/cart', cartRouter);
-app.use('/user/prodInfo',prodInfoRouter)
+app.use('/', shopRouter);
 
-//관리자API
-app.use('/main', mainRouter);
 
 
 // catch 404 and forward to error handler

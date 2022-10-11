@@ -1,0 +1,71 @@
+<style>
+    p {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <h1>상품 등록</h1>
+                <br><br>
+                <form action="" id="insertProduct" method="post" enctype="multipart/form-data" autocomplete="off"
+                    accept-charset="UTF-8">
+                    <input type="hidden" name="productDetail">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="checkout__input">
+                                <p>물품명<span>*</span></p>
+                                <input type="text" name="productName" required>
+                            </div>
+                            <div class="checkout__input">
+                                <p>물품설명<span>*</span></p>
+                                <textarea id="editor" name="editor" required></textarea>
+                            </div>
+                            <div class="checkout__input">
+                                <p>물품가격<span>*</span></p>
+                                <input type="number" name="productPrice" required>
+                            </div>
+                            <div class="checkout__input">
+                                <p>물품분류<span>*</span></p>
+                                <input type="text" name="productDiv" required>
+                            </div>
+                            <div class="checkout__input">
+                                <p>물품수량<span>*</span></p>
+                                <input type="number" name="productCount" required>
+                            </div>
+                            <div class="checkout__input">
+                                <p>대표이미지<span>*</span></p>
+                                <input type="file" name="file" id="file">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button class="site-btn" id="insert_btn"> 상품 등록</button>
+            </div>
+        </div>
+    </section>
+    <!-- Checkout Section End -->
+    <script src="https://cdn.ckeditor.com/4.20.0/basic/ckeditor.js"></script>
+
+    <script>
+        window.onload = function () {
+            //ckeditor
+            var editor = CKEDITOR.replace('editor');
+            $("#insert_btn").click(function () {
+                var content = editor.getData()
+                if (confirm("등록하시겠습니까?") == true) {
+                    $('input[name=productDetail]').attr('value', content);
+                    $("#insertProduct").attr("action", "insertProduct/insert");
+                    $("#insertProduct").submit();
+                } else {
+                    return;
+                };
+            });
+        }
+    </script>
+</body>
