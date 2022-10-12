@@ -10,8 +10,8 @@ router.get('/', async function(req, res, next) {
   results = await selectHomeProduct();
   console.log(results)
   res.render('user/home', {
-     title: 'home',
-     results: results
+      title: 'home',
+      results: results
     });
 });
 
