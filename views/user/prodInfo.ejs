@@ -24,10 +24,14 @@
                     <p class="lead fw-normal text-white-50 mb-0">
                         상세보기
                     </p>
+                    
                         <div class="col mb-5">
+                            
                             <div class="card h-100" style="width: 304.2px;">
                                 <!-- Product image: 이부분은 클릭된 해당 상품에 따라 사진이 변경되어야함.-->
-                                <img class="card-img-top" src="/images/macbook.png" width="100px" alt="..." style="width: 300px;">
+                            
+                                <img class="card-img-top" src="../<%=results[0].PRODUCT_IMG%>" width="100%">
+                              
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
@@ -52,23 +56,25 @@
                                     
                                     <tr>
                                         <td>상품명</td>
-                                        <!--열을 합칠 때에는 앞 열에 colspan 적용-->
-                                        <td colspan="2"><input type="text"></input></td>
+                                        <td colspan="2"><%=results[0].PRODUCT_NAME%></input></td>
                                     </tr>
                                     <tr>
-                                        <td>브랜드</td>
-                                        <td><input type="text"></td>
+                                        <td>분류</td>
+                                        <td><%=results[0].PRODUCT_DIV%></td>
                                     </tr>
                                     <tr>
                                         <td>상품가격</td>
-                                        <td><input type="text"></td>
+                                        <td><%=results[0].PRODUCT_PRICE%></td>
                                     </tr>
                                     <tr>
                                         <td>상품설명</td>
-                                        <td><input type="text"></td>
+                                        <td><%-results[0].PRODUCT_DETAIL%></td>
                                     </tr>
                                     
                                 </table>
+
+
+                                
                             <!-- </div> -->
                             <button>장바구니 담기</button>
                             <button>목록</button>
