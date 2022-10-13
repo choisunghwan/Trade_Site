@@ -6,14 +6,14 @@ const { ORACLE_CONFIG } = require("../config/db");
 
 //로그인 페이지로 이동
 router.get("/", (req, res) => {
-    let route = req.app.get("views") + "/login";
+    let route = req.app.get("views") + "/login2";
     res.render(route, {
         layout: false,
     });
 });
 
 //로그인
-router.post("/login", async (req, res) => {
+router.post("/login2", async (req, res) => {
     const loginEmail = req.body.loginEmail;
     const loginPwd = req.body.loginPwd;
 

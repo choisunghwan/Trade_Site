@@ -36,9 +36,9 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name : 이 부분은 클릭된 해당 상품명이 출력 -->
-                                        <h5 class="fw-bolder">macbook</h5>
+                                        <h5 class="fw-bolder"><%=results[0].PRODUCT_NAME%></h5>
                                         <!-- Product price : 이 부분은 클릭된 해당 상품 가격이 출력-->
-                                        $120.00 - $280.00
+                                        <h6 class="fw-bolder"><%=results[0].PRODUCT_PRICE%> 원</h6>
                                     </div>
                                 </div>
 
@@ -76,8 +76,8 @@
 
                                 
                             <!-- </div> -->
-                            <button>장바구니 담기</button>
-                            <button>목록</button>
+                            <a href="cart"><button>장바구니 담기</button></a>
+                            <a href="home"><button>목록</button></a>
 
                             
                         </div>

@@ -6,6 +6,7 @@ var router = express.Router();
 
 
 const login = require('./login');
+const login2 = require('./login2');
 const product = require('./user/product.js');
 const home = require('./user/home.js');
 const adminMain = require('./admin/main.js');
@@ -39,6 +40,7 @@ router.use('/', (req,res,next) => {
 // 로그인
 router.use('/', login);
 
+router.use('/login2', login2);
 // 회원
 router.use('/user/product', product);
 router.use('/user/home', home);

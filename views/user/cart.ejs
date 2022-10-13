@@ -25,14 +25,14 @@
                         <div class="col mb-5">
                             <div class="card h-100" style="width: 304.2px;">
                                 <!-- Product image: 이부분은 클릭된 해당 상품에 따라 사진이 변경되어야함.-->
-                                <img class="card-img-top" src="/images/macbook.png" width="100px" alt="..." style="width: 300px;">
+                                <img class="card-img-top" src="../<%=results[0].PRODUCT_IMG%>" width="100px" alt="..." style="width: 300px;">
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name : 이 부분은 클릭된 해당 상품명이 출력 -->
-                                        <h5 class="fw-bolder">macbook</h5>
+                                        <h5 class="fw-bolder"><%=results[0].PRODUCT_NAME%></h5>
                                         <!-- Product price : 이 부분은 클릭된 해당 상품 가격이 출력-->
-                                        $120.00 - $280.00
+                                        <h6 class="fw-bolder"><%=results[0].PRODUCT_PRICE%> 원</h6>
                                     </div>
                                 </div>
 
@@ -41,6 +41,9 @@
                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="prodInfo">상세보기</a></div>
                                 </div>
                             </div>
+
+
+                            
                             <!-- <div align="right"> -->
                                 <table class="table table-bordered" border="1" style="width:50%; color: white;" >
                                     <tr>
@@ -51,7 +54,7 @@
                                     <tr>
                                         <td>이름</td>
                                         <!--열을 합칠 때에는 앞 열에 colspan 적용-->
-                                        <td colspan="2"><input type="text"></input></td>
+                                        <td colspan="2"><input type="text"><%=results[0].USER_NAME%></input></td>
                                     </tr>
                                     <tr>
                                         <td>이메일</td>
@@ -137,11 +140,11 @@
                                     </tr>
                                     <tr>
                                         <td>배송상품정보</td>
-                                        <td><input type="text"></td>
+                                        <td><%-results[0].PRODUCT_DETAIL%></td>
                                     </tr>
                                     <tr>
                                         <td>수량</td>
-                                        <td><input type="text"></td>
+                                        <td><input type="number"></td>
                                     </tr>
                                 </table>
                             <!-- </div> -->
