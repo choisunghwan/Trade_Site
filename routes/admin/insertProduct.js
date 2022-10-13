@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
   });
 
 // 물건 등록
-router.post('/insert', upload.single('file'), async function(req, res, next) {
+router.post('/insert', upload.array('file'), async function(req, res, next) {
   const param = [req.body.productName, req.file.path, req.body.productPrice, req.body.productDetail, req.body.productCount, req.body.productDiv]
   // console.log(req.file.path);
   await insertProduct(param)
@@ -66,5 +66,18 @@ async function insertProduct(param) {
   await connection.close();
 
 }
+// 상품 추가 파일 등록
+async function insertFile(param2) {
+  // console.log(param)
+  let connection = await oracledb.getConnection(ORACLE_CONFIG);
+  var sql2 = "INSERT INTO PRODUCTFILE(FILE_ROUTE, FILE_NO, FILE_ORG_NAME, FILE_TYPE, PRODUCT_ID)\
+              values(:fileRoute, :fileNo, :fileOrgName, :fileType, (select MAX(PRODUCT_ID) FROM PRODUCT) ) "
+  let options = {
+      outFormat: oracledb.OUT_FORMAT_OBJECT   // query result format
+    };
+  await connection.execute(sql2, param2, options)
+  
+  await connection.close();
 
+}
 module.exports = router;
