@@ -26,7 +26,7 @@ router.get('/detail', function(req, res, next) {
 async function selectProductList(productDiv, searchText) {
 
   let connection = await oracledb.getConnection(ORACLE_CONFIG);
-  var sql = " SELECT PRODUCT_NAME, PRODUCT_IMG, PRODUCT_ID, PRODUCT_PRICE FROM PRODUCT WHERE 1=1 "
+  var sql = " SELECT PRODUCT_NAME, PRODUCT_IMG, PRODUCT_ID,TO_CHAR(PRODUCT_PRICE,'FM999,999,999')AS PROD_PRICE FROM PRODUCT WHERE 1=1 "
   var binds = [];
   if(productDiv != ""){
     sql += " and PRODUCT_DIV = :productDiv "
