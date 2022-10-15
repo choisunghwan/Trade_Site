@@ -12,7 +12,7 @@ router.get("/", async function (req, res, next) {
     const productId = req.query.productId == undefined ? 1 : req.query.productId;
     console.log(productId)
   // select 1
-    results = await selectprodInfo(productId);
+    results = await selectprodCart(productId);
     console.log(results);
 
   //cart.ejs 에서 렌더링 하기
@@ -22,7 +22,7 @@ router.get("/", async function (req, res, next) {
 });
 
 //select1
-async function selectprodInfo(productId) {
+async function selectprodCart(productId) {
 
     let connection = await oracledb.getConnection(ORACLE_CONFIG);
     var sql = "SELECT PRODUCT_ID,PRODUCT_NAME,PRODUCT_DETAIL,PRODUCT_COUNT,PRODUCT_DIV,PRODUCT_DATE,PRODUCT_IMG, TO_CHAR(PRODUCT_PRICE,'FM999,999,999')AS PROD_PRICE\

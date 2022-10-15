@@ -15,6 +15,8 @@ router.get('/', async function(req, res, next) {
   results = await selectprodInfo(productId);
   //추가 파일 이미지
   var productFile = await selectProductFile(productId);
+
+  
 console.log(results);
 //prodinfo.ejs 에서 렌더링 하기 
   res.render('user/prodInfo', {

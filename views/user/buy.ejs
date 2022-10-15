@@ -32,13 +32,13 @@
                                     <!-- Product name : 이 부분은 클릭된 해당 상품명이 출력 -->
                                     <h5 class="fw-bolder"><%=buy[0].PRODUCT_NAME%></h5>
                                     <!-- Product price : 이 부분은 클릭된 해당 상품 가격이 출력-->
-                                    <h6 class="fw-bolder"><%=buy[0].PRODUCT_PRICE%> 원</h6>
+                                    <h6 class="fw-bolder"><%=buy[0].PROD_PRICE%> 원</h6>
                                 </div>
                             </div>
 
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="prodInfo">상세보기</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="prodInfo?productId=<%=buy[0].PRODUCT_ID%>">상세보기</a></div>
                             </div>
                         </div>
 
@@ -149,7 +149,7 @@
                             </table>
                         <!-- </div> -->
                         <a href="home"><button>결제 취소</button></a>
-                        <a href="buy"><button>결제 하기</button></a>
+                        <a href=""><button>결제 하기</button></a>
                         
 
                         
