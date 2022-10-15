@@ -13,10 +13,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
     </head>
+    
     <body  style="padding-top: 190px;">
-        
         <!-- Header-->
-
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
@@ -24,21 +23,42 @@
                     <p class="lead fw-normal text-white-50 mb-0">
                         상세보기
                     </p>
-                    
-                        <div class="col mb-5">
-                            
+                        <div class="col mb-5">    
                             <div class="card h-100" style="width: 304.2px;">
-                                <!-- Product image: 이부분은 클릭된 해당 상품에 따라 사진이 변경되어야함.-->
-                            
-                                <img class="card-img-top" src="../<%=results[0].PRODUCT_IMG%>" width="100%">
-                              
+                                <!--  Product image: 이부분은 클릭된 해당 상품에 따라 사진이 변경되어야함. -->
+                        
+
+                                <div class="product__details__pic">
+                                    <% if(productFile.length != 0){ %>
+                                    <div class="product__details__pic__item">
+                                        <img class="product__details__pic__item--large" src="../<%=productFile[0].FILE_ROUTE%>"
+                                            alt="">
+                                    </div>            
+                                    <div class="product__details__pic__slider owl-carousel">
+                                        <% for(i=0; i< productFile.length; i++){%>
+                                        <img data-imgbigurl="../<%=productFile[i].FILE_ROUTE%>"
+                                            src="../<%=productFile[i].FILE_ROUTE%>" alt="">
+                                        <%}%>
+                                    </div>
+                                    <%} else{%>
+                                        <div class="product__details__pic__item">
+                                            <img class="product__details__pic__item--large" src="../<%=productDetail[0].PRODUCT_IMG%>"
+                                                alt="">
+                                        </div>  
+                                        <%}%>
+                            </div>
+
+
+
+
+
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name : 이 부분은 클릭된 해당 상품명이 출력 -->
-                                        <h5 class="fw-bolder"><%=results[0].PRODUCT_NAME%></h5>
+                                        <h5 class="fw-bolder"><%=prodInfo[0].PRODUCT_NAME%></h5>
                                         <!-- Product price : 이 부분은 클릭된 해당 상품 가격이 출력-->
-                                        <h6 class="fw-bolder"><%=results[0].PRODUCT_PRICE%> 원</h6>
+                                        <h6 class="fw-bolder"><%=prodInfo[0].PROD_PRICE%> 원</h6>
                                     </div>
                                 </div>
 
@@ -56,19 +76,19 @@
                                     
                                     <tr>
                                         <td>상품명</td>
-                                        <td colspan="2"><%=results[0].PRODUCT_NAME%></input></td>
+                                        <td colspan="2"><%=prodInfo[0].PRODUCT_NAME%></input></td>
                                     </tr>
                                     <tr>
                                         <td>분류</td>
-                                        <td><%=results[0].PRODUCT_DIV%></td>
+                                        <td><%=prodInfo[0].PRODUCT_DIV%></td>
                                     </tr>
                                     <tr>
                                         <td>상품가격</td>
-                                        <td><%=results[0].PRODUCT_PRICE%></td>
+                                        <td><%=prodInfo[0].PROD_PRICE%></td>
                                     </tr>
                                     <tr>
                                         <td>상품설명</td>
-                                        <td><%-results[0].PRODUCT_DETAIL%></td>
+                                        <td><%-prodInfo[0].PRODUCT_DETAIL%></td>
                                     </tr>
                                     
                                 </table>
@@ -76,15 +96,12 @@
 
                                 
                             <!-- </div> -->
-                            <a href="cart"><button>장바구니 담기</button></a>
+                            <a href="cart?productId=<%=prodInfo[0].PRODUCT_ID%>"><button>장바구니 담기</button></a>
+                            <a href="buy"><button>구매하기</button></a>
                             <a href="home"><button>목록</button></a>
-
                             
                         </div>
                 </div>
-
         </header>
-
-
         </body>
-        </html>
+</html>

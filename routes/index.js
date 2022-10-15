@@ -4,17 +4,20 @@ var router = express.Router();
 
 
 
-
+//비회원
 const login = require('./login');
 const login2 = require('./login2');
-const product = require('./user/product.js');
+
+//회원
 const home = require('./user/home.js');
+const product = require('./user/product.js');
+const prodInfo = require('./user/prodInfo.js');
+const cart = require('./user/cart.js');
+const buy = require('./user/buy.js');
+
+//관리자
 const adminMain = require('./admin/main.js');
 const adminInsertProduct = require('./admin/insertProduct.js');
-const cart = require('./user/cart.js');
-const prodInfo = require('./user/prodInfo.js');
-
-
 
 
 
@@ -46,6 +49,8 @@ router.use('/user/product', product);
 router.use('/user/home', home);
 router.use('/user/cart', cart);
 router.use('/user/prodInfo', prodInfo);
+router.use('/user/buy', buy);
+
 
 // 관리자
 router.use('/admin/main', adminMain);
