@@ -9,11 +9,12 @@ const {
 router.get('/', async function(req, res, next) {
   const productDiv = req.query.productDiv == undefined ? "" : req.query.productDiv;
   const searchText = req.query.searchText == undefined ? "" : req.query.searchText;
-
   results = await selectProductList(productDiv, searchText);
+  
+  
   res.render('user/product', {
-     productList: results,
-     productDiv: productDiv
+      productList: results,
+      productDiv: productDiv
     });
 });
 

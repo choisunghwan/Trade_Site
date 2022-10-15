@@ -1,3 +1,4 @@
+<!-- 모든상품 페이지 -->
 <!DOCTYPE html>
 <html lang="en">
     <head>  
@@ -13,6 +14,30 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
     </head>
+
+    <body>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder"></h1>
+                    <p class="lead fw-normal text-white-50 mb-0"></p>
+                </div>
+            </div>
+    
+            <!-- 검색창 -->
+            <div class="container">
+                <div class="row height d-flex justify-content-center align-items-center">                  
+                    <div class="col-md-6">
+                        <div class="form">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="form-control form-input" placeholder="Search anything...">
+                            <span class="left-pan"><i class="fa fa-microphone"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 <body  style="padding-top: 190px;">
     <!-- Section-->
     <section class="py-5">
@@ -53,6 +78,15 @@
 
             </div>
         </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
     </section>
 <!-- Footer-->
 <footer class="py-5 bg-dark">
