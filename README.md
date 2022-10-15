@@ -9,7 +9,7 @@
 | 3. UI 구현 |  <img src="https://user-images.githubusercontent.com/33335762/195088033-edc633e5-65b0-4a77-b203-305c3ad17f07.png" width="700" height="400"/> ||
 | 4. OracleDB 연동 |  <img src="https://user-images.githubusercontent.com/33335762/195088805-217eb0b9-8441-4abd-b9c0-87d407b32332.png" width="700" height="400"/> ||
 | 5. 관리자,일반회원 권한|  <img src="https://user-images.githubusercontent.com/33335762/195089462-d662529d-d067-4061-b0b8-c1623a54114b.png" width="700" height="400"/> |추가적으로 레이아웃에 대해 배웠다. https://couchcoding.tistory.com/310|
-| 6. 페이징, 검색바 UI 생성|  <img src="https://user-images.githubusercontent.com/33335762/195989792-ef3844c6-13ba-4246-b2a1-57c71d9fbfb6.png" width="700" height="400"/> ||
+| 6. 페이징, 검색바 UI 생성|  <img src="https://user-images.githubusercontent.com/33335762/195989792-ef3844c6-13ba-4246-b2a1-57c71d9fbfb6.png"/> ||
 
 
 제한없이 모두 출력(home.js) 22line
