@@ -16,7 +16,7 @@ router.post('/', async function(req, res, next) {
     const param = [req.body.productId, req.body.count, userId]
     console.log(cart)
     try{
-        if(cart == 0){  // 장바구니가 없을때 
+        if(cart.length == 0){  // 장바구니가 없을때 
 
             // 장바구니 생성
             await insertCart(userId);

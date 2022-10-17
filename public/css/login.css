@@ -83,7 +83,7 @@ img{
 
 
 .right {
-	background: linear-gradient(212.38deg, rgba(75, 75, 75, 0.7) 0%, rgba(121, 121, 121, 0.71) 100%),url(https://user-images.githubusercontent.com/33335762/196092902-1b2958c5-58e3-4faf-9116-9ebb809fd382.png);
+	background: linear-gradient(212.38deg, rgba(75, 75, 75, 0.7) 0%, rgba(121, 121, 121, 0.71) 100%),url(../images/apples.gif);
   /* url(https://static.seattletimes.com/wp-content/uploads/2019/01/web-typing-ergonomics-1020x680.jpg); */
 	color: #fff;
 	position: relative;
