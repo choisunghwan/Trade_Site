@@ -30,7 +30,8 @@ try {
     } else {
     // 조회되는 유저정보가 있는경우
     const userName = result.USER_NAME;
-
+    const userId= result.USER_ID;
+    console.log(userId)
     // 일반회원인지 관리자인지 판단
     if (result.USER_AUTH == "관리자") {
         if (req.session.user) {
@@ -40,6 +41,7 @@ try {
           req.session.user = {
             sessionEmail: loginEmail,
             sessionName: userName,
+            sessionId: userId
           };
           res.redirect("/admin/main");
         }
@@ -49,6 +51,7 @@ try {
         } else {
           // 세션 생성
           req.session.user = {
+            sessionId: userId,
             sessionEmail: loginEmail,
             sessionName: userName,
           };
@@ -81,7 +84,7 @@ async function selectDatabase(loginId, loginPwd) {
     let connection = await oracledb.getConnection(ORACLE_CONFIG);
 
     let sql =
-      "select user_email, user_name, user_auth from member \
+      "select user_email, user_name, user_Id, user_auth from member \
                   where user_email = :email and user_pwd = :pwd";
     let param = [loginId, loginPwd]; // 조건 값
     let options = {

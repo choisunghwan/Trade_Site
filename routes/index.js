@@ -14,6 +14,7 @@ const product = require('./user/product.js');
 const prodInfo = require('./user/prodInfo.js');
 const cart = require('./user/cart.js');
 const buy = require('./user/buy.js');
+const insertCart = require('./user/insertCart.js');
 
 //관리자
 const adminMain = require('./admin/main.js');
@@ -50,7 +51,7 @@ router.use('/user/home', home);
 router.use('/user/cart', cart);
 router.use('/user/prodInfo', prodInfo);
 router.use('/user/buy', buy);
-
+router.use('/user/insertCart', insertCart);
 
 // 관리자
 router.use('/admin/main', adminMain);

@@ -13,7 +13,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
     </head>
-    
+
     <body  style="padding-top: 190px;">
         <!-- Header-->
         <header class="bg-dark py-5">
@@ -90,13 +90,28 @@
                                         <td>상품설명</td>
                                         <td><%-prodInfo[0].PRODUCT_DETAIL%></td>
                                     </tr>
+                                    <tr>
+                                        <td>상품 남은 수량</td>
+                                        <td><%=prodInfo[0].PRODUCT_COUNT%></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                        <div class="product__details__quantity">
+                                            <input type='button' onclick='count("plus")' value='+' />
+                                            <input type='text' id='result' value='0'>
+                                            <input type='button' onclick='count("minus")' value='-' />
+                                        </div>
+                                        </td>
+                                    </tr>
+                                    
                                     
                                 </table>
 
 
                                 
                             <!-- </div> -->
-                            <a href="cart?productId=<%=prodInfo[0].PRODUCT_ID%>"><button>장바구니 담기</button></a>
+                            <button id="addCart" onclick="addCart('<%=prodInfo[0].PRODUCT_ID%>')">장바구니 담기</button>
+                            <a href="cart?productId=<%=prodInfo[0].PRODUCT_ID%>"><button>장바구니로 이동</button></a>
                             <a href="buy?productId=<%=prodInfo[0].PRODUCT_ID%>"><button>구매하기</button></a>
                             <a href="home"><button>목록</button></a>
                             
@@ -104,4 +119,42 @@
                 </div>
         </header>
         </body>
+
+<script>
+        function addCart(productId) {
+        var count = document.getElementById('result').value
+        fetch("/user/insertCart", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    productId: productId,
+                    count: document.getElementById('result').value,
+                }),
+            })
+            .then((response) => response.json())
+            .then(function (data) {
+                alert('상품이 장바구니에 담겼습니다.')
+            });
+    }
+
+    function count(type)  {
+        // 결과를 표시할 element
+        const resultElement = document.getElementById('result');
+        
+        // 현재 화면에 표시된 값
+        let number = resultElement.value;
+        
+        // 더하기/빼기
+        if(type === 'plus') {
+            number = parseInt(number) + 1;
+        }else if(type === 'minus')  {
+            number = parseInt(number) - 1;
+        }
+        
+        // 결과 출력
+        resultElement.value = number;
+    }
+</script>
 </html>
