@@ -12,10 +12,10 @@ const {
 router.get('/', async function(req, res, next) {
     // 세션에 저장된 유저 정보
     const userId = req.session.user.sessionId;
-    console.log(userId)
+    // console.log(userId)
 
     cart = await selectCart(userId);
-    console.log(cart)
+    // console.log(cart)
     if(cart.length == 0){  // 장바구니가 없을때  
 
         // 장바구니 생성

@@ -12,7 +12,7 @@ router.get('/', async function(req, res, next) {
     const productId = req.query.productId == undefined ? 1 : req.query.productId;
     
     results = await selectproductBuy(productId);
-    console.log(results)
+    // console.log(results)
 
     res.render('user/buy', {
         buy : results

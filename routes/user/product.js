@@ -36,8 +36,8 @@ async function selectProductList(productDiv, searchText) {
     sql += " and product_name like :searchText "
     binds.push("'%"+searchText+"%'");
   }
-  console.log(binds)
-  console.log(sql)
+  // console.log(binds)
+  // console.log(sql)
   let options = {
       outFormat: oracledb.OUT_FORMAT_OBJECT   // query result format
     };

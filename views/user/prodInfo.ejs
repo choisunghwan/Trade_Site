@@ -131,10 +131,10 @@
                 $("input[name=chk]:checked").each(function () {
                     chkArr.push($(this).val());
                 });
-                console.log(chkArr)
+                // console.log(chkArr)
 
                 $('#cartChk').val(chkArr);
-                console.log($('#cartChk'))
+                // console.log($('#cartChk'))
                 $("#cartForm").attr("action", "buy");
                 $("#cartForm").submit();
             } else {
@@ -145,8 +145,7 @@
 
 
 
-
-
+//장바구니 담기 클릭시 실행 
         function addCart(productId) {
         var count = document.getElementById('result').value
         fetch("/user/insertCart", {

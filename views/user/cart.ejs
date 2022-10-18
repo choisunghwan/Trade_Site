@@ -62,7 +62,7 @@
                                         <%=cartProduct[i].SUM_PRICE%>
                                     </td>
                                 </tr>
-                            </form>
+                            
                         </div>
 
                         <%}%>
@@ -81,11 +81,11 @@
                                         <h2>장바구니에 상품이 존재하지 않습니다.</h2>
                                         <%}%>
                 </div>
-
-
                 <tfoot>
+
                     <tr>
-                        <td colspan="3"><input type="checkbox"> <button class="cart__list__optionbtn">선택상품 삭제</button>
+                        
+                        <td colspan="3"> <button id="delete_cart">선택상품 삭제</button>
                             <button class="cart__list__optionbtn">선택상품 찜</button>
                         </td>
                         <td></td>
@@ -107,8 +107,36 @@
     </section>
 </body>
 <script>
+
+//체크 제품 삭제
+window.onload = function () {
+        $("#delete_cart").click(function () {
+            console.log($("#delete_cart"))
+            // 체크된 상품 번호 가져오기
+            var chkArr = [];
+            $("input[name=chk]:checked").each(function () {
+                chkArr.push($(this).val());
+            });
+            console.log(chkArr)
+            if (confirm("삭제하시겠습니까?") == true) {
+
+
+                $('#cartChk').val(chkArr);
+                console.log($('#cartChk'))
+                $("#cartForm").attr("action", "cart");
+                $("#cartForm").submit();
+            } else {
+                return;
+            };
+        });
+    }
+
+
+
+//주문하기 버튼 동적 실행
     window.onload = function () {
         $("#buy_cart").click(function () {
+            console.log("#buy_cart")
             if (confirm("구매하시겠습니까?") == true) {
 
                 // 체크된 상품 번호 가져오기

@@ -9,7 +9,7 @@ const {
 // 결제 페이지로 이동
 router.post('/', async function(req, res, next) {
   const cartChk = JSON.parse("[" + req.body.cartChk + "]")
-  console.log(cartChk)
+  // console.log(cartChk)
   const buyProduct = await selectCartProduct(cartChk)
 
   // var sumPrice = 0;
@@ -37,7 +37,7 @@ async function selectCartProduct(cartChk) {
   let connection = await oracledb.getConnection(ORACLE_CONFIG);
 
   var sql = "SELECT CP.*, P.PRODUCT_NAME, P.PRODUCT_PRICE,P.PRODUCT_ID,CP.CARTPRODUCT_COUNT, (P.PRODUCT_PRICE * CP.CARTPRODUCT_COUNT) AS SUM_PRICE, P.PRODUCT_IMG, \
-  TO_CHAR(SUM(CP.CARTPRODUCT_COUNT * P.PRODUCT_PRICE)OVER(),'FM999,999,999')as PRICETOTAL, SUM(CP.CARTPRODUCT_COUNT) OVER() as total\
+  TO_CHAR(SUM(CP.CARTPRODUCT_COUNT * P.PRODUCT_PRICE)OVER(),'FM999,999,999')as PRICETOTAL, SUM(CP.CARTPRODUCT_COUNT) OVER() as total,TO_CHAR(PRODUCT_PRICE,'FM999,999,999')AS PROD_PRICE\
             FROM CARTPRODUCT CP LEFT JOIN PRODUCT P \
             ON CP.PRODUCT_ID = P.PRODUCT_ID \
             WHERE CARTPRODUCT_ID = :cartChk ";

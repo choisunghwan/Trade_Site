@@ -19,7 +19,7 @@ router.post("/login", async (req, res) => {
 
   // 이메일, 비밀번호 DB 조회
 result = await selectDatabase(loginEmail, loginPwd);
-console.log(result);
+// console.log(result);
 try {
     // result == undefined 인경우
     // 조회되는 아이디,비번 x
@@ -31,7 +31,7 @@ try {
     // 조회되는 유저정보가 있는경우
     const userName = result.USER_NAME;
     const userId= result.USER_ID;
-    console.log(userId)
+    // console.log(userId)
     // 일반회원인지 관리자인지 판단
     if (result.USER_AUTH == "관리자") {
         if (req.session.user) {

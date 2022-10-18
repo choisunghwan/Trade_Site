@@ -8,7 +8,7 @@ const {
 
 router.get('/', async function(req, res, next) {
   results = await selectHomeProduct();
-  console.log(results)
+  // console.log(results)
   res.render('user/home', {
       title: 'home',
       results: results
@@ -35,7 +35,7 @@ async function selectHomeProduct() {
   
   await connection.close();
 
-  console.log(result.rows)
+  // console.log(result.rows)
   return result.rows;
 }
 

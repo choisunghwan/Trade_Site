@@ -8,14 +8,19 @@ const {
 
 /* GET home page. */
 
-// 장바구니 조회 및 등록
+// 장바구니 조회 및 등록 +삭제
 router.get('/', async function(req, res, next) {
+
+  // const cartChk = JSON.parse("[" + req.body.cartChk + "]")
+
+
+
   // 세션에 저장된 유저 정보
   const userId = req.session.user.sessionId;
   console.log(userId)
 
   cart = await selectCart(userId);
-  console.log(cart)
+  // console.log(cart)
   if(cart.length == 0){  // 장바구니가 없을때  
 
     // 장바구니 생성
@@ -26,11 +31,12 @@ router.get('/', async function(req, res, next) {
   } else{ // 장바구니가 이미 있는 경우
 
     // 장바구니 물품 조회
-    cartProduct = await selectCartProduct(userId)
-
+    cartProduct = await selectCartProduct(userId);
+    
   }
   res.render('user/cart', {
-    cartProduct: cartProduct
+    cartProduct: cartProduct,
+
     });
 });
 
@@ -81,7 +87,7 @@ async function insertCart(userId) {
       let result = await connection.execute(sql, [userId], options);
       
       await connection.close();
-      console.log(result)
+      // console.log(result)
   
       return result.rows;
     }

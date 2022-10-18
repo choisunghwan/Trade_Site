@@ -46,7 +46,7 @@
                               <td><img src="../../<%=buyProduct[i].PRODUCT_IMG%>" style= "width:150px";></td>
                               <td><p> <%=buyProduct[i].PRODUCT_NAME%><p></td>
                               <td><p><%=buyProduct[i].CARTPRODUCT_COUNT%> 개</p></td>
-                              <td><p><%=buyProduct[i].PRODUCT_PRICE%> 원</p></td>
+                              <td><p><%=buyProduct[i].PROD_PRICE%> 원</p></td>
                             </tr>
                             <%}%>
                           
@@ -162,7 +162,7 @@
           window.onload = function(){
           //ckeditor
           $("#insert_btn").click(function () {
-            console.log($("#insert_btn"))
+            // console.log($("#insert_btn"))
             if (confirm("결제하시겠습니까?") == true) {
               var IMP = window.IMP; 
                 IMP.init('imp76102156'); 
