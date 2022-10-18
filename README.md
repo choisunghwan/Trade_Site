@@ -11,7 +11,7 @@
 | 5. 관리자,일반회원 권한|  <img src="https://user-images.githubusercontent.com/33335762/195089462-d662529d-d067-4061-b0b8-c1623a54114b.png"/> |추가적으로 레이아웃에 대해 배웠다. https://couchcoding.tistory.com/310|
 | 6. 페이징, 검색바 UI 생성|  <img src="https://user-images.githubusercontent.com/33335762/195989792-ef3844c6-13ba-4246-b2a1-57c71d9fbfb6.png"/> ||
 | 7. 장바구니 총 수량, 총가격 추가|  <img src="https://user-images.githubusercontent.com/33335762/196330915-1cd62679-647e-467f-a337-d328862af932.png"/> |추가적으로 TO_CHAR(PRODUCT_PRICE,'FM999,999,999')AS PROD_PRICE 로 가격 천단위 콤마 찍어주었음.|
-| 8. 결제 페이지 |  <img src=""/> | 결제 버튼 클릭시 카카오페이 결제수단으로 이동하기|
+| 8. 결제 페이지 |  <img src="https://user-images.githubusercontent.com/33335762/196423758-726d5725-00a9-4a99-aeb5-b4fd2e7b5d1e.png"/><img src="https://user-images.githubusercontent.com/33335762/196423807-33205ee4-ee62-41cd-bfda-4dafb8da781d.png"/> | 결제 버튼 클릭시 카카오페이 결제수단으로 이동하기|
 
 
 
@@ -19,3 +19,7 @@
 
 제한없이 모두 출력(home.js) 22line
   let sql = "  SELECT *FROM PRODUCT ORDER BY PRODUCT_DATE DESC";
+
+
+
+
