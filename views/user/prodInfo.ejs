@@ -24,7 +24,7 @@
                         상세보기
                     </p>
                         <div class="col mb-5">    
-                            <div class="card h-100" style="width: 304.2px;">
+                            <div class="card h-100" style="width: 602.4px;">
                                 <!--  Product image: 이부분은 클릭된 해당 상품에 따라 사진이 변경되어야함. -->
                         
 
@@ -32,7 +32,7 @@
                                     <% if(productFile.length != 0){ %>
                                     <div class="product__details__pic__item">
                                         <img class="product__details__pic__item--large" src="../<%=productFile[0].FILE_ROUTE%>"
-                                            alt="">
+                                            style="width: 500px; height: 600px;"alt="">
                                     </div>            
                                     <div class="product__details__pic__slider owl-carousel">
                                         <% for(i=0; i< productFile.length; i++){%>
@@ -112,7 +112,7 @@
                             <!-- </div> -->
                             <button id="addCart" onclick="addCart('<%=prodInfo[0].PRODUCT_ID%>')">장바구니 담기</button>
                             <a href="cart?productId=<%=prodInfo[0].PRODUCT_ID%>"><button>장바구니로 이동</button></a>
-                            <a href="buy?productId=<%=prodInfo[0].PRODUCT_ID%>"><button>구매하기</button></a>
+                            <button id="buy_cart" class="cart__bigorderbtn right">주문하기</button>
                             <a href="home"><button>목록</button></a>
                             
                         </div>
@@ -121,6 +121,32 @@
         </body>
 
 <script>
+
+    window.onload = function () {
+        $("#buy_cart").click(function () {
+            if (confirm("구매하시겠습니까?") == true) {
+
+                // 체크된 상품 번호 가져오기
+                var chkArr = [];
+                $("input[name=chk]:checked").each(function () {
+                    chkArr.push($(this).val());
+                });
+                console.log(chkArr)
+
+                $('#cartChk').val(chkArr);
+                console.log($('#cartChk'))
+                $("#cartForm").attr("action", "buy");
+                $("#cartForm").submit();
+            } else {
+                return;
+            };
+        });
+    }
+
+
+
+
+
         function addCart(productId) {
         var count = document.getElementById('result').value
         fetch("/user/insertCart", {

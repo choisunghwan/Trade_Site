@@ -11,13 +11,14 @@ router.post('/', async function(req, res, next) {
   const cartChk = JSON.parse("[" + req.body.cartChk + "]")
   console.log(cartChk)
   const buyProduct = await selectCartProduct(cartChk)
-  var sumPrice = 0;
-  for(i=0; i < buyProduct.length; i++){
-    sumPrice += buyProduct[i].SUM_PRICE;
-  }
+
+  // var sumPrice = 0;
+  // for(i=0; i < buyProduct.length; i++){
+  //   sumPrice += buyProduct[i].SUM_PRICE;
+  // }
     res.render('user/buy', {
         buyProduct : buyProduct,
-        sumPrice : sumPrice
+        // sumPrice : sumPrice
       });
   });
 
@@ -34,8 +35,9 @@ router.post('/buyProduct',  async function(req, res, next) {
 async function selectCartProduct(cartChk) {
 
   let connection = await oracledb.getConnection(ORACLE_CONFIG);
-  
-  var sql = "SELECT CP.*, P.PRODUCT_NAME, P.PRODUCT_PRICE,P.PRODUCT_ID, (P.PRODUCT_PRICE * CP.CARTPRODUCT_COUNT) AS SUM_PRICE, P.PRODUCT_IMG \
+
+  var sql = "SELECT CP.*, P.PRODUCT_NAME, P.PRODUCT_PRICE,P.PRODUCT_ID,CP.CARTPRODUCT_COUNT, (P.PRODUCT_PRICE * CP.CARTPRODUCT_COUNT) AS SUM_PRICE, P.PRODUCT_IMG, \
+  TO_CHAR(SUM(CP.CARTPRODUCT_COUNT * P.PRODUCT_PRICE)OVER(),'FM999,999,999')as PRICETOTAL, SUM(CP.CARTPRODUCT_COUNT) OVER() as total\
             FROM CARTPRODUCT CP LEFT JOIN PRODUCT P \
             ON CP.PRODUCT_ID = P.PRODUCT_ID \
             WHERE CARTPRODUCT_ID = :cartChk ";

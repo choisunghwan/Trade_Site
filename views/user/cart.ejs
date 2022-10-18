@@ -22,10 +22,9 @@
 
 
         <table class="cart__list">
-            <form>
                 <thead>
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox" name ='chk' value='selectall' onclick='selectAll(this)'/></td>
                         <td>상품정보</td>
 
                         <td>상품이름</td>
@@ -43,7 +42,7 @@
                         <div>
                             <form id="cartForm" method="POST" action="">
                                 <input type="hidden" id="cartChk" name="cartChk" />
-                                <tr onclick='event.cancelBubble=true;'>
+                                <tr onclick='event.cancelBubble=true;' style="text-align: center;">
                                     <td><input type="checkbox" id="chk" name="chk"
                                             value="<%=cartProduct[i].CARTPRODUCT_ID %>"> </input></td>
                                     <td><img src="../../<%=cartProduct[i].PRODUCT_IMG%>"
@@ -67,8 +66,8 @@
                         </div>
 
                         <%}%>
-                           
-                                <tr>
+
+                                <tr style="text-align: center;">
                                     <td colspan="2"></td>
                                     <td>총 수량:</td>
                                     <td>
@@ -77,7 +76,7 @@
                                     <td>총 가격 :</td>
                                     <td><%=cartProduct[0].PRICETOTAL%></td>
                                 </tr>
-                               
+
                                     <%}else {%>
                                         <h2>장바구니에 상품이 존재하지 않습니다.</h2>
                                         <%}%>
@@ -120,7 +119,7 @@
                 console.log(chkArr)
 
                 $('#cartChk').val(chkArr);
-
+                console.log($('#cartChk'))
                 $("#cartForm").attr("action", "buy");
                 $("#cartForm").submit();
             } else {
@@ -128,6 +127,16 @@
             };
         });
     }
+
+//체크박스 전체 선택
+    function selectAll(selectAll)  {
+  const checkboxes 
+       = document.getElementsByName('chk');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+}
 </script>
 
 </html>

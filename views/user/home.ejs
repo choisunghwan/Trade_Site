@@ -43,7 +43,7 @@
                             <!-- Product image-->
                                 <div class="col-lg-3">
                                     <div class="categories__item set-bg" style= "width: 200px;">
-                                        <img class="card-img-top" src="../<%=results[i].PRODUCT_IMG%>" width="100%">
+                                        <img class="card-img-top" src="../<%=results[i].PRODUCT_IMG%>" width="100%" style="height:240px";>
                                     </div>
                                 </div>
                             
@@ -51,7 +51,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder"><a href="#"><%=results[i].PRODUCT_NAME%></a></h5>
+                                    <h5 class="fw-bolder"><a href="prodInfo?productId=<%=results[i].PRODUCT_ID%>"><%=results[i].PRODUCT_NAME%></a></h5>
                                     <!-- Product price-->
                                     <h6><%=results[i].PROD_PRICE%> 원</h6>
                                 </div>

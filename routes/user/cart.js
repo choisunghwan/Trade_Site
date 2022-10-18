@@ -66,8 +66,6 @@ async function insertCart(userId) {
 
 
 
-
-
     // 장바구니 물품 조회
     async function selectCartProduct(userId) {
       let connection = await oracledb.getConnection(ORACLE_CONFIG);
