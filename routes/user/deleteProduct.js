@@ -16,6 +16,7 @@ router.post('/', async function(req, res, next) {
       });
   });
 
+  
 // 장바구니 삭제
 async function deleteCart(cartChk) {
   let connection = await oracledb.getConnection(ORACLE_CONFIG);
@@ -33,7 +34,7 @@ if(cartChk.length > 1){
   let options = {
       outFormat: oracledb.OUT_FORMAT_OBJECT   // query result format
     };
-  let result = await connection.execute(sql, [cartChk], options);
+  let result = await connection.execute(sql, cartChk, options);
   
   await connection.close();
 

@@ -35,7 +35,7 @@ router.get('/', async function(req, res, next) {
     
   }
   res.render('user/cart', {
-    cartProduct: cartProduct,
+    cartProduct: cartProduct
 
     });
 });
