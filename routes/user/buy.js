@@ -16,8 +16,8 @@ router.post('/', async function(req, res, next) {
     sumPrice += buyProduct[i].SUM_PRICE;
   }
     res.render('user/buy', {
-       buyProduct : buyProduct,
-       sumPrice : sumPrice
+        buyProduct : buyProduct,
+        sumPrice : sumPrice
       });
   });
 
@@ -35,10 +35,10 @@ async function selectCartProduct(cartChk) {
 
   let connection = await oracledb.getConnection(ORACLE_CONFIG);
   
-  var sql = "SELECT CP.*, P.PRODUCT_NAME, (P.PRODUCT_PRICE * CP.CARTPRODUCT_COUNT) AS SUM_PRICE, P.PRODUCT_IMG \
+  var sql = "SELECT CP.*, P.PRODUCT_NAME, P.PRODUCT_PRICE,P.PRODUCT_ID, (P.PRODUCT_PRICE * CP.CARTPRODUCT_COUNT) AS SUM_PRICE, P.PRODUCT_IMG \
             FROM CARTPRODUCT CP LEFT JOIN PRODUCT P \
             ON CP.PRODUCT_ID = P.PRODUCT_ID \
-           WHERE CARTPRODUCT_ID = :cartChk ";
+            WHERE CARTPRODUCT_ID = :cartChk ";
 
   if(cartChk.length > 1){
 

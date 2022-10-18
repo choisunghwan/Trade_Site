@@ -71,7 +71,8 @@ async function insertCart(userId) {
     // 장바구니 물품 조회
     async function selectCartProduct(userId) {
       let connection = await oracledb.getConnection(ORACLE_CONFIG);
-      var sql = " select c.*, p.product_name, p.product_img, p.product_price,p.product_id, (c.cartproduct_count * p.product_price) sum_price \
+      var sql = " select c.*, p.product_name, p.product_img, p.product_price,p.product_id,SUM(CARTPRODUCT_COUNT) OVER() as total,TO_CHAR(c.cartproduct_count * p.product_price ,'FM999,999,999') AS SUM_PRICE ,\
+      TO_CHAR(SUM(c.cartproduct_count * p.product_price)OVER(),'FM999,999,999')  as PRICETOTAL , TO_CHAR(PRODUCT_PRICE,'FM999,999,999')AS PROD_PRICE \
                   from cartproduct c\
                   left join product p on c.product_id = p.product_id\
                   WHERE c.CART_ID = (SELECT CART_ID FROM CART WHERE USER_ID = :id) \
