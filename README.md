@@ -29,7 +29,7 @@ https://user-images.githubusercontent.com/33335762/210296073-5fd4ebed-59c7-4d2e-
 
 2. 관리자 권한
 
-
+https://user-images.githubusercontent.com/33335762/210296434-e49a50af-3968-4a55-b5a3-bd9e522d4b46.mp4
 
 
 
