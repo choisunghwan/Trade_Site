@@ -16,9 +16,18 @@
 
 
 
+---
 
-제한없이 모두 출력(home.js) 22line
-  let sql = "  SELECT *FROM PRODUCT ORDER BY PRODUCT_DATE DESC";
+## 시연영상
+
+1. 사용자 권한
+
+
+https://user-images.githubusercontent.com/33335762/210296073-5fd4ebed-59c7-4d2e-b905-5506239c36ab.mp4
+
+
+
+2. 관리자 권한
 
 
 
